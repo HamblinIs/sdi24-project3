@@ -7,8 +7,9 @@ module.exports = {
 
   development: {
     client: 'pg',
-    connection: "postgres://postgresql:docker@localhost/"
-
+    connection: 'postgres://postgres:docker@localhost/space_database'
+    // replace USER_NAME, USER_PASSWORD, and DATABASE_NAME with your Docker PostgreSQL container's username, password and an *empty* database
+    // that you have created on your Docker PostgreSQL container volume
   },
 
   staging: {
