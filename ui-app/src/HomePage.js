@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import "/.HomePage"
-import Flighs from "/.Flights.js"
+import "src/.HomePage.css"
 
 
 class App extends Component {
