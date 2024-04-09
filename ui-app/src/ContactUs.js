@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import CommentBox from './Components/CommentBox';
 
 
@@ -11,6 +10,7 @@ const ContactUs = () => {
 
   return (
     <>
+    <p>Hello</p>
     <CommentBox />
     </>
   );

@@ -1,26 +1,23 @@
-
-import React from 'react'
-import { BrowserRouter as Router,  Switch, Route} from 'react-router-dom'
-// import Home from './Home'
-// import AboutUs from './AboutUs'
-import ContactUs from './ContactUs'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// import Home from './Home'; //
+// import AboutUs from './AboutUs'; //
+import ContactUs from './ContactUs';
 
 import './App.css';
 
 function App() {
   return (
     <>
-    <div>
-      <Router>
-      
-          <Switch>
-            {/* <Route path={'/AboutUs'} component={AboutUs}></Route> */}
-            <Route path={'/ContactUs'} component={ContactUs}></Route>
-            {/* <Route path={'/'} component={Home}></Route> */}
-          </Switch>
-        
-      </Router>
-    </div>
+      <div>
+        <Router>
+          <Routes>
+            {/* <Route path={'/AboutUs'} element={<AboutUs />} /> */} {/* Uncomment this line if you want to use the AboutUs component */}
+            <Route path={'/ContactUs'} element={<ContactUs />} />
+            {/* <Route path={'/'} element={<Home />} /> */} {/* Uncomment this line if you want to use the Home component */}
+          </Routes>
+        </Router>
+      </div>
     </>
   );
 }
