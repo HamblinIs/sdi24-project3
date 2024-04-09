@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-// import Home from './Home'; //
+import Home from './HomePage.js'; 
 // import AboutUs from './AboutUs'; //
 import ContactUs from './ContactUs';
 
@@ -14,7 +14,7 @@ function App() {
           <Routes>
             {/* <Route path={'/AboutUs'} element={<AboutUs />} /> */} {/* Uncomment this line if you want to use the AboutUs component */}
             <Route path={'/ContactUs'} element={<ContactUs />} />
-            {/* <Route path={'/'} element={<Home />} /> */} {/* Uncomment this line if you want to use the Home component */}
+            <Route path={'/HomePage'} element={<Home />} />
           </Routes>
         </Router>
       </div>

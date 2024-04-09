@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PrimarySearchAppBar from './Components/Headerbar'
 
 
 const Home = () => {
@@ -10,7 +10,7 @@ const Home = () => {
 
   return (
     <>
-
+    <PrimarySearchAppBar />
     </>
   );
 };
