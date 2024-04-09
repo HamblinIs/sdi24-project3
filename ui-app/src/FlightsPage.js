@@ -1,20 +1,18 @@
-import React, { Component } from 'react';
-import "/FlightPage.css"
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 
-class App extends Component {
-constructor(props) {
-    super(props);
-    this.state = {
-      posts: []
-    }
-  }
+const Flights = () => {
 
-render() {
-    return (
+  const style = {
+
+  };
+
+  return (
     <>
+
     </>
-    );
-  }
-}
-export default App;
+  );
+};
+
+export default Home;
