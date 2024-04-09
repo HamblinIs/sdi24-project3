@@ -1,6 +1,5 @@
 const express = require('express');
 const cookieSession = require('cookie-session'); 
-var cookieParser = require('cookie-parser')
 const app = express();
 const port = 8080;
 
