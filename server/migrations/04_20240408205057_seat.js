@@ -6,7 +6,6 @@ exports.up = function(knex) {
   return knex.schema.createTable('seat', table => {
       table.increments('id');
       table.smallint('seat_class');
-      table.specificType('launch', 'INT[]')
   })
 };
 
