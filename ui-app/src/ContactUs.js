@@ -1,6 +1,7 @@
 import React from 'react';
 import CommentBox from './Components/CommentBox';
 import './Styling/ContactUs.css'
+import ResponsiveAppBar from './Components/Headerbar'
 
 
 const ContactUs = () => {
@@ -11,6 +12,7 @@ const ContactUs = () => {
 
   return (
     <>
+    <ResponsiveAppBar />
     <div class="line"></div>
     <p className='contact'>Contact Us</p>
     <p className='message'>
