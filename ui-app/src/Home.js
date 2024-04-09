@@ -11,6 +11,7 @@ const Home = () => {
   return (
     <>
     <ResponsiveAppBar />
+    <p>This is the Homepage</p>
     </>
   );
 };
