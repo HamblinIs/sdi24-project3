@@ -1,6 +1,26 @@
-const express =  require('express');
-const app =  express();
+const express = require('express');
+const cookieSession = require('cookie-session'); 
+var cookieParser = require('cookie-parser')
+const app = express();
 const port = 8080;
+
+
+
+app.use(cookieSession({
+    name: 'user_session',
+    keys: ['key1', 'key2'],
+    httpOnly: true,
+    sameSite: 'strict',
+}));
+
+app.get('/login', function (req, res) {
+    if (loginSuccess(req.body.username)) {
+        req.session.username = req.body.username;
+    }else {
+        // forbidden
+        req.status(403).send();
+      }
+}); 
 
 app.get('/', (req, res) => res.send('Hello World!'));
 
