@@ -43,6 +43,7 @@ app.post('/auth/signin', async (req, res) => {
             res.status(201).json({status: "Authenticated"})
         }
     })
+    .catch(err => res.status(500).send(err));
 })
 
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
