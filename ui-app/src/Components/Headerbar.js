@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import '../Styling/Headerbar.css';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -115,9 +116,12 @@ function ResponsiveAppBar() {
               Discover Yourself While Discovering The Universe
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+          {pages.map((page) => (
               <Button
+                data-testid={page}
                 key={page}
+                component={Link}
+                to={`/${page.replace(/\s+/g, '').toLowerCase()}`}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
