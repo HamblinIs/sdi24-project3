@@ -11,6 +11,7 @@ const ContactUs = () => {
 
   return (
     <>
+    <div class="line"></div>
     <p className='contact'>Contact Us</p>
     <p className='message'>
       Got a question, concern, or just want to say hello? We're here to help! Our dedicated customer service team is available to assist you with any inquiries you may have. Simply fill out the form below, and we'll get back to you as soon as possible. 

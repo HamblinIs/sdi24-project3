@@ -84,7 +84,7 @@ export default function CommentBox() {
               >
                 <FormatItalic />
               </IconButton>
-              <Button sx={{ ml: 'auto' }} onClick={HandleSubmit}>Send</Button> {/* Call handleSubmit function on button click */}
+              <Button sx={{ ml: 'auto' }} onClick={HandleSubmit}>Send</Button> 
             </Box>
           }
           sx={{
