@@ -3,12 +3,12 @@
  * @returns { Promise<void> }
  */
 exports.up = function(knex) {
-    return knex.schema.createTable('ticket', function(table) => {
+    return knex.schema.createTable('ticket', table => {
         table.increments('id');
-        table.integer('purchasing-user');
-        table.foreign('purchasing-user').references('user-account.id').inTable('user-account');
-        table.integer('launch');
-        table.foreign('launch').references('launch.id').inTable('launch');
+        table.integer('purchasing_user').unsigned();
+        table.foreign('purchasing_user').references('id').inTable('user_account');
+        table.integer('launch').unsigned();
+        table.foreign('launch').references('id').inTable('launch');
     });
 };
 /**
@@ -17,7 +17,7 @@ exports.up = function(knex) {
  */
 exports.down = function(knex) {
     return knex.schema.alterTable('ticket', table => {
-        table.dropForeign('purchasing-user');
+        table.dropForeign('purchasing_user');
         table.dropForeign('launch');
     })
     .then(function() {
