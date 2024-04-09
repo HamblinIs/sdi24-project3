@@ -16,7 +16,7 @@ app.get('/login', function (req, res) {
     if (loginSuccess(req.body.username)) {
         req.session.username = req.body.username;
     }else {
-        // forbidden
+        
         req.status(403).send();
       }
 }); 
