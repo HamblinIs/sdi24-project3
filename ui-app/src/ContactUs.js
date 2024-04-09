@@ -1,18 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import CommentBox from './Components/CommentBox';
 
 
 const ContactUs = () => {
 
-  const style = {
 
-  };
+
+  
 
   return (
     <>
-
+    <CommentBox />
     </>
   );
-};
+}
+;
 
 export default ContactUs;
