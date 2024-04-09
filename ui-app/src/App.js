@@ -1,30 +1,22 @@
-// // import "/.login.css";
-// import './App.css';
-// import React from 'react';
-// import Example from './Login';
-// import { BrowserRouter as Router, Routes, Route} from "react-router-dom"
-
-// function App() {
-//   return (
-//     <Router>
-//       <Routes>
-//         <Route path='/' element={<Example/>}/>
-//       </Routes>
-//     </Router>
-
-//   );
-// }
-
-// export default App;
 
 import React from 'react';
 import './App.css';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import Register from './Register';
+import Login from './Login';
 
 function App() {
   return (
-    <div className="App">
+    <Router>
+    {/* <Link to={'/register'}>Register Here</Link> */}
+    <Routes>
+      <Route path='/' element={<Login/>}/>
+      <Route path='/register' element={ <Register/>}></Route>
+    </Routes>
+  </Router>
+    // <div className="App">
 
-    </div>
+    // </div>
   );
 }
 
