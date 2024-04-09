@@ -1,8 +1,21 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import React, { Component } from 'react';
+import "/.HomePage"
+import Flighs from "/.Flights.js"
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+
+class App extends Component {
+constructor(props) {
+    super(props);
+    this.state = {
+      posts: []
+    }
+  }
+
+render() {
+    return (
+    <>
+    </>
+    );
+  }
+}
+export default App;
