@@ -96,7 +96,7 @@ export default function CommentBox() {
       </FormControl>
     ) : (
       <div>
-        <p>Thank you for your comment!</p> {/* Display thank you message if comment submitted */}
+        <p>Thank you for your comment! Our dedicated team of customer support agents will get back to you shortly!</p> 
       </div>
     )}
   </React.Fragment>
