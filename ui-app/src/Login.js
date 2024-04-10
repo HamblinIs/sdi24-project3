@@ -70,8 +70,8 @@ width: 100%;
 
 const Login = () => {
   const [userData, setUserData] = useState(null);
-  const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [username, setUsername] = useState("");
   const [error, setError] = useState(null);
 
 const handleSubmit = async (event) => {
@@ -80,7 +80,7 @@ const handleSubmit = async (event) => {
   const response = await fetch('http://localhost:8080/auth/signin', {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, password})
+      body: JSON.stringify({ userData})
     })
     // .then(response => {
     //  if response.status !== 200) {
@@ -110,7 +110,7 @@ const handleSubmit = async (event) => {
       <InputField
         type="text"
         placeholder="Enter Username"
-        onChange={(e) => setUsername(e.target.value)}
+        // onChange={(e) => setUsername(e.target.value)}
       />
     </div>
     <br />
@@ -119,7 +119,7 @@ const handleSubmit = async (event) => {
       <InputField
         type="text"
         placeholder="Enter Password"
-        onChange={(e) => setPassword(e.target.value)}
+        // onChange={(e) => setPassword(e.target.value)}
         />
       </div>
       <Button type = "submit" onClick={() => console.log('Button Clicked')}>Login</Button>
