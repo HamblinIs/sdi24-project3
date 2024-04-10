@@ -7,6 +7,12 @@ const cors = require('cors');
 api.use(express.json())
 api.use(cors())
 
+//make a joined get for launch with some ID and seats
+
+//make a post for user accounts to create a new account
+
+//make a joined get to display your flights
+
 
 api.get('/data/user_account', function(req, res) {
     knex('user_account')
@@ -19,6 +25,7 @@ api.get('/data/launch', function(req, res) {
         .select('*')
         .then(data => res.status(200).json(data))
 })
+
 
 api.get('/data/seats', function(req, res) {
     knex('seats')
