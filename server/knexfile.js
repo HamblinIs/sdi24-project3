@@ -6,7 +6,13 @@
 module.exports = {
   development: {
     client: "postgresql",
-    connection: process.env.DB_CONNECTION_STRING
+    connection: "postgres://postgres:docker@127.0.0.1:5432/space_database"
+  },
+
+  localhost: {
+    client: "postgresql",
+    connection: "postgres://postgres:docker@db:5432/space_database"
+
   },
 
   // development: {

@@ -16,16 +16,14 @@ services:
   server:
     build: ./server
     container_name: server
-    volumes:
-      - "./server:/app"
     ports:
       - "8080:8080"
-    networks:
-      - app-network
     environment:
+      NODE_ENV: "localhost"
       DB_CONNECTION_STRING: postgres://postgres:docker@db:5432/space_database
     depends_on:
-      - db
+      db:
+        condition: service_healthy
 
   db:
     image: postgres
@@ -35,13 +33,15 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: docker
-      POSTGRES_DB: space-database
-
+      POSTGRES_DB: space_database
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
     volumes:
-      - ./my_data_directory:/var/lib/postgresql/data
-    networks:
-      - app-network
+      - data-store:/var/lib/postgresql/data
 
-networks:
-  app-network:
-    driver: bridge
+volumes:
+  data-store:
