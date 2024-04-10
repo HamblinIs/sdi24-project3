@@ -1,10 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './Home.js'; 
 import Flights from './PurchaseTickets.js'; //
 import ContactUs from './ContactUs';
-
 import './App.css';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import Register from './Register';
+import Login from './Login';
 
 function App() {
   return (
@@ -16,11 +17,14 @@ function App() {
             <Route path={'/ContactUs'} element={<ContactUs />} />
             <Route path={'/Home'} element={<Home />} />
             <Route path={'/PurchaseTickets'} element={<Flights />} />
+            <Route path='/' element={<Login/>}/>
+            <Route path='/register' element={ <Register/>}></Route>
 
           </Routes>
         </Router>
       </div>
     </>
+   
   );
 }
 
