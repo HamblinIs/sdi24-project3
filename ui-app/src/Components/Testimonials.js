@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../Styling/Testimonials.css';
 
-
 const Testimonials = () => {
+    const [isOpen, setIsOpen] = useState(false);
+
     const testimonials = [
         {
             id: 1,
@@ -18,15 +19,24 @@ const Testimonials = () => {
         }
     ];
 
+    const toggleOpen = () => {
+        setIsOpen(!isOpen);
+    };
+
     return (
         <div className="testimonials">
             <h2>Testimonials</h2>
-            {testimonials.map(testimonial => (
-                <div key={testimonial.id} className="testimonial">
-                    <p>{testimonial.message}</p>
-                    <p>- {testimonial.author}, {testimonial.country}</p>
+            <button className="toggle-button" onClick={toggleOpen}>{isOpen ? 'Hide Testimonials' : 'Show Testimonials'}</button>
+            {isOpen && (
+                <div className="content">
+                    {testimonials.map(testimonial => (
+                        <div key={testimonial.id} className="testimonial">
+                            <p>{testimonial.message}</p>
+                            <p>- {testimonial.author}, {testimonial.country}</p>
+                        </div>
+                    ))}
                 </div>
-            ))}
+            )}
         </div>
     );
 }

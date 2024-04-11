@@ -10,15 +10,16 @@ const Home = () => {
     <>
       <ResponsiveAppBar />
       <div className="homepage-content">
-        
-        <div className="purple-box">
-          <Testimonials /> 
-        </div>
-        <div className="purple-box">
-          <Destinations />
-        </div>
-        <div className="purple-box">
-          <FAQs />
+        <div className="button-container">
+          <div className="purple-box">
+            <Testimonials /> 
+          </div>
+          <div className="purple-box">
+            <Destinations />
+          </div>
+          <div className="purple-box">
+            <FAQs />
+          </div>
         </div>
       </div>
     </>

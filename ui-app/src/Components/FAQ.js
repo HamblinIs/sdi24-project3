@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../Styling/FAQ.css';
 
-
 const FAQs = () => {
+    const [isOpen, setIsOpen] = useState(false);
+
     const faqs = [
         {
             id: 1,
@@ -31,15 +32,24 @@ const FAQs = () => {
         }
     ];
 
+    const toggleOpen = () => {
+        setIsOpen(!isOpen);
+    };
+
     return (
         <div className="faqs">
             <h2>Frequently Asked Questions</h2>
-            {faqs.map(faq => (
-                <div key={faq.id} className="faq">
-                    <h3>{faq.question}</h3>
-                    <p>{faq.answer}</p>
+            <button className="toggle-button" onClick={toggleOpen}>{isOpen ? 'Hide FAQs' : 'Show FAQs'}</button>
+            {isOpen && (
+                <div className="content">
+                    {faqs.map(faq => (
+                        <div key={faq.id} className="faq">
+                            <h3>{faq.question}</h3>
+                            <p>{faq.answer}</p>
+                        </div>
+                    ))}
                 </div>
-            ))}
+            )}
         </div>
     );
 }

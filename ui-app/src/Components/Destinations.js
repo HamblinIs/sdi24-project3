@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../Styling/Destination.css';
 
-
 const Destinations = () => {
+    const [isOpen, setIsOpen] = useState(false);
+
     const destinations = [
         {
             id: 1,
@@ -24,20 +25,29 @@ const Destinations = () => {
         }
     ];
 
+    const toggleOpen = () => {
+        setIsOpen(!isOpen);
+    };
+
     return (
         <div className="destinations">
             <h2>Exciting Destinations</h2>
-            {destinations.map(destination => (
-                <div key={destination.id} className="destination">
-                    <h3>{destination.planet}</h3>
-                    <p>{destination.description}</p>
-                    <ul>
-                        {destination.attractions.map(attraction => (
-                            <li key={attraction}>{attraction}</li>
-                        ))}
-                    </ul>
+            <button className="toggle-button" onClick={toggleOpen}>{isOpen ? 'Hide Destinations' : 'Show Destinations'}</button>
+            {isOpen && (
+                <div className="content">
+                    {destinations.map(destination => (
+                        <div key={destination.id} className="destination">
+                            <h3>{destination.planet}</h3>
+                            <p>{destination.description}</p>
+                            <ul>
+                                {destination.attractions.map(attraction => (
+                                    <li key={attraction}>{attraction}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    ))}
                 </div>
-            ))}
+            )}
         </div>
     );
 }
