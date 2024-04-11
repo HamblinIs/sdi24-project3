@@ -54,7 +54,12 @@ exports.seed = async function(knex) {
     {'seat_type_int': 1, 'launch': 7, 'passenger': 5, 'price': 582},
     {'seat_type_int': 3, 'launch': 3, 'passenger': 1, 'price': 850},
     {'seat_type_int': 1, 'launch': 1, 'passenger': 8, 'price': 1273},
-    {'seat_type_int': 3, 'launch': 4, 'passenger': 4, 'price': 1067},
-    {'seat_type_int': 1, 'launch': 8, 'passenger': 6, 'price': 730}]
+    {'seat_type_int': 3, 'launch': 4, 'price': 1067},
+    {'seat_type_int': 3, 'launch': 4, 'price': 1067},
+    {'seat_type_int': 3, 'launch': 4, 'price': 1067},
+    {'seat_type_int': 3, 'launch': 4, 'price': 1067},
+    {'seat_type_int': 3, 'launch': 4, 'price': 1067},
+    {'seat_type_int': 3, 'launch': 4, 'price': 1067},
+    {'seat_type_int': 1, 'launch': 4, 'price': 730}]
   );
 };
