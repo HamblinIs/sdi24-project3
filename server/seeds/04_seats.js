@@ -6,7 +6,7 @@ exports.seed = async function(knex) {
   // Deletes ALL existing entries
   // await knex('seats').del()
   await knex('seats').insert(
-    [{'seat_type_int': 1, 'launch': 0, 'passenger': 5, 'price': 1180},
+    [{'seat_type_int': 1, 'launch': 1, 'passenger': 5, 'price': 1180},
     {'seat_type_int': 1, 'launch': 8, 'passenger': 1, 'price': 1189},
     {'seat_type_int': 2, 'launch': 3, 'passenger': 5, 'price': 1091},
     {'seat_type_int': 3, 'launch': 7, 'passenger': 7, 'price': 635},
@@ -19,7 +19,7 @@ exports.seed = async function(knex) {
     {'seat_type_int': 1, 'launch': 2, 'passenger': 10, 'price': 572},
     {'seat_type_int': 2, 'launch': 2, 'passenger': 1, 'price': 1481},
     {'seat_type_int': 3, 'launch': 4, 'passenger': 8, 'price': 524},
-    {'seat_type_int': 3, 'launch': 0, 'passenger': 10, 'price': 1328},
+    {'seat_type_int': 3, 'launch': 1, 'passenger': 10, 'price': 1328},
     {'seat_type_int': 2, 'launch': 8, 'passenger': 10, 'price': 1384},
     {'seat_type_int': 1, 'launch': 9, 'passenger': 9, 'price': 1079},
     {'seat_type_int': 1, 'launch': 2, 'passenger': 1, 'price': 1083},
