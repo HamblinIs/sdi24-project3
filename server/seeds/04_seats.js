@@ -4,7 +4,7 @@
  */
 exports.seed = async function(knex) {
   // Deletes ALL existing entries
-  await knex('seats').del()
+  // await knex('seats').del()
   await knex('seats').insert(
     [{'id': 0, 'seat_type_int': 1, 'launch': 0, 'passenger': 5, 'price': 1180},
     {'id': 1, 'seat_type_int': 1, 'launch': 8, 'passenger': 1, 'price': 1189},

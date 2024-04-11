@@ -72,12 +72,15 @@ width: 100%;
 // }
 
 const Login = () => {
-  const [userData, setUserData] = useState(null);
-  const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("");
-  const [error, setError] = useState(null);
+  const [userData, setUserData] = useState({
+    username: '',
+    password: '',
+  });
+  // const [password, setPassword] = useState("");
+  // const [username, setUsername] = useState("");
+  // const [error, setError] = useState(null);
 
-const handleSubmit = async (event) => {
+const handleSubmit = (event) => {
   event.preventDefault();
 
   // const response = await fetch('http://localhost:8080/data/user_accounts', {
@@ -86,25 +89,28 @@ const handleSubmit = async (event) => {
   //     body: JSON.stringify({ userData})
   //   })
 
-  const response = await fetch('http://localhost:8080/auth/signin', {
+  fetch('http://localhost:8080/data/user_account', {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(userData)
-    })
-    // .then(response => {
-    //  if response.status !== 200) {
-    //   throw new Error('Not a valid Username or Password');
-    // }
-    // .then(data => {
-    //   setUserData(data);
-    // })
-    if (response.status === 201) {
-      const data = await response.json();
-      setUserData(data);
-    }else{
-      setError('User not found');
+  })
+    .then(response => {
+     if (response.status === 201) {
+      window.location.href ='http://localhost:8080/Home';
+     }else {
+      throw new Error('Not a valid Username or Password');
     }
+  })
 }
+
+
+    // if (response.status === 201) {
+    //   const data = await response.json();
+    //   setUserData(data);
+    // }else{
+    //   setError('User not found');
+    // }
+
 
 
   return (
@@ -119,7 +125,7 @@ const handleSubmit = async (event) => {
       <InputField
         type="text"
         placeholder="Enter Username"
-        onChange={(e) => setUsername(e.target.value)}
+        // onChange={(e) => setUsername(e.target.value)}
       />
     </div>
     <br />
@@ -128,7 +134,7 @@ const handleSubmit = async (event) => {
       <InputField
         type="text"
         placeholder="Enter Password"
-        onChange={(e) => setPassword(e.target.value)}
+        // onChange={(e) => setPassword(e.target.value)}
         />
       </div>
       <Button type = "submit" onClick={() => console.log('Button Clicked')}>Login</Button>

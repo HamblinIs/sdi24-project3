@@ -53,7 +53,7 @@ color: white;
 border: 30px solid;
 `;
 
-const RegisterForm = () => {
+const Register = () => {
   const [userData, setUserData] = useState(null);
   // const [password, setPassword] = useState("");
   // const [username, setUsername] = useState("");
@@ -70,15 +70,15 @@ const handleSubmit = async (event) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(userData)
     })
-    if (response.status === 201) {
-      const data = await response.json();
-      setUserData(data);
-    }else{
-      setError('Error registering user');
-    }
-}}
+    .then(response => {
+      if (response.status !== 201) {
+       throw new Error('Unable to register user');
+     }
+     setUserData(response.json());
+    })
+  }
 
-const Register = () => {
+
   return (
     <>
     <ResponsiveAppBar/>
