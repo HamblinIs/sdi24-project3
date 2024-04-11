@@ -61,7 +61,7 @@ api.post('/auth/signup', (req, res) => {
     .insert({name, address, email, username, password})
     // knex.insert([{ name: userData.name }, { address: userData.address }, { email: userData.email }, { username: userData.username }, { password: userData.password }], ['id'])
     // .into('user_account');
-    res.status(201).json({status: "Authenticated"});
+    .then(res.status(201).json({status: "Authenticated"}))
 })
 
 api.post('/auth/signin', async (req, res) => {
