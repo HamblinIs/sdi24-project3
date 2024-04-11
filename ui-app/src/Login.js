@@ -36,10 +36,11 @@ border: 1px solid #ccc;
 box-sizing: border-box;`
 
 const Background = styled.div`
-background-image: url('http://wallpapercave.com/wp/pEeUsp1.jpg');
+background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREfLTJ4M6oQwfGs9waFkLFz1I5UPlNdlj2iJlQip1d-8Ds_h_oRM9DeF_U_XM1Uyn5G68&usqp=CAU');
 height: 100vh;
 display: cover;
 background-size: cover;
+image-rendering: auto;
 `;
 
 const Button = styled.button`
@@ -70,17 +71,23 @@ width: 100%;
 
 const Login = () => {
   const [userData, setUserData] = useState(null);
-  // const [password, setPassword] = useState("");
-  // const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
   const [error, setError] = useState(null);
 
 const handleSubmit = async (event) => {
   event.preventDefault();
 
+  // const response = await fetch('http://localhost:8080/data/user_accounts', {
+  //     method: "GET",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({ userData})
+  //   })
+
   const response = await fetch('http://localhost:8080/auth/signin', {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userData})
+      body: JSON.stringify(userData)
     })
     // .then(response => {
     //  if response.status !== 200) {
@@ -89,7 +96,7 @@ const handleSubmit = async (event) => {
     // .then(data => {
     //   setUserData(data);
     // })
-    if (response.status === 200) {
+    if (response.status === 201) {
       const data = await response.json();
       setUserData(data);
     }else{
@@ -110,7 +117,7 @@ const handleSubmit = async (event) => {
       <InputField
         type="text"
         placeholder="Enter Username"
-        // onChange={(e) => setUsername(e.target.value)}
+        onChange={(e) => setUsername(e.target.value)}
       />
     </div>
     <br />
@@ -119,7 +126,7 @@ const handleSubmit = async (event) => {
       <InputField
         type="text"
         placeholder="Enter Password"
-        // onChange={(e) => setPassword(e.target.value)}
+        onChange={(e) => setPassword(e.target.value)}
         />
       </div>
       <Button type = "submit" onClick={() => console.log('Button Clicked')}>Login</Button>

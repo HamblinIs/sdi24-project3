@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
+import Terms from "./Terms"
+import Popup from 'reactjs-popup';
 
 const RegisterBox = styled.div`
   text-align:center;
@@ -38,6 +40,12 @@ cursor: pointer;
 width: 100%;
 `;
 
+const Container = styled.button`
+background-color: blue;
+color: white;
+
+`;
+
 const RegisterForm = () => {
   const [userData, setUserData] = useState(null);
   // const [password, setPassword] = useState("");
@@ -50,16 +58,16 @@ const RegisterForm = () => {
 const handleSubmit = async (event) => {
   event.preventDefault();
 
-  const response = await fetch('http://localhost:8080/auth/signin', {
+  const response = await fetch('http://localhost:8080/auth/signup', {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({userData})
+      body: JSON.stringify(userData)
     })
-    if (response.status === 200) {
+    if (response.status === 201) {
       const data = await response.json();
       setUserData(data);
     }else{
-      setError('User not found');
+      setError('Error registering user');
     }
 }}
 
@@ -79,11 +87,28 @@ const Register = () => {
         <InputField type="text" placeholder="Username" name="username" />
         <Label>Password</Label>
         <InputField type="text" placeholder="Password" name="psw" />
-        <p> By creating an account you agree to our TERMS AND CONDITIONS</p>
-
+        <p> By creating an account you agree to our</p>
+          <Popup
+            trigger={<Button>Terms</Button>}
+            modal
+            nested
+            style={{color:"white"}}>
+            {(close) => (
+              <div className="modal">
+                <button className="close" onClick={close}>
+                  &times;
+                </button>
+                <Container>
+                <Terms />
+                </Container>
+              </div>
+            )}
+          </Popup>
+        <Link to={'/terms'} style={{color:"blue"}}>Terms & Condition</Link>
         <Button type = "submit" onClick={() => console.log('Button Clicked')}>Register</Button>
         <p>Already have an account?</p>
         <Link to={'/'} style={{color:"black"}}>Log In</Link>
+
       </RegisterBox>
     </>
   );
