@@ -4,6 +4,8 @@ services:
   frontend:
     build: ./ui-app
     container_name: frontend
+    volumes:
+      - "./ui-app:/app"
     ports:
       - "3000:3000"
     depends_on:
