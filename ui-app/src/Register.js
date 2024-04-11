@@ -54,13 +54,26 @@ border: 30px solid;
 `;
 
 const Register = () => {
-  const [userData, setUserData] = useState(null);
+  // const [userData, setUserData] = useState(null);
   // const [password, setPassword] = useState("");
   // const [username, setUsername] = useState("");
   // const [name, setName] = useState("");
   // const [email, setEmail] = useState("");
   // const [address, setAddress] = useState("");
   const [error, setError] = useState(null);
+  const [newUser, setNewUser] = setState({
+    // "id": int,
+    "name": "",
+    "address": "",
+    "email": "",
+    "username": "",
+    "password": ""
+  })
+
+  const addNew = (event) => {
+    const { name, input } = event.trigger
+    setNewUser({...newUser, [name]: ""})
+  }
 
 const handleSubmit = async (event) => {
   event.preventDefault();
@@ -68,14 +81,20 @@ const handleSubmit = async (event) => {
   const response = await fetch('http://localhost:8080/auth/signup', {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(userData)
+      body: JSON.stringify(newUser)
     })
-    .then(response => {
-      if (response.status !== 201) {
-       throw new Error('Unable to register user');
-     }
-     setUserData(response.json());
-    })
+    if(response.status !== 201) {
+      throw new Error("Unable to register user")
+    }else{
+      setNewUser({
+        // "id": int,
+    "name": "",
+    "address": "",
+    "email": "",
+    "username": "",
+    "password": ""
+      })
+    }
   }
 
 

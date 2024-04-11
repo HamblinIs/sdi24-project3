@@ -89,7 +89,7 @@ const handleSubmit = (event) => {
   //     body: JSON.stringify({ userData})
   //   })
 
-  fetch('http://localhost:8080/data/user_account', {
+  fetch('http://localhost:8080/auth/signin', {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(userData)
