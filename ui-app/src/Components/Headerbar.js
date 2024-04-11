@@ -16,7 +16,7 @@ import MenuItem from '@mui/material/MenuItem';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 
 const pages = ['Purchase Tickets', 'List of Vendors', 'Contact Us', 'Home'];
-const settings = ['Profile', 'Account', 'My Tickets', 'Logout'];
+const settings = ['Profile', 'My Tickets', 'Logout'];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -89,8 +89,15 @@ function ResponsiveAppBar() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+            {pages.map((page) => (
+                <MenuItem
+                aria-valuetext={page}
+                key={page}
+                component={Link}
+                to={`/${page.replace(/\s+/g, '').toLowerCase()}`}
+                onClick={() => {
+                  handleCloseNavMenu();
+                }}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
