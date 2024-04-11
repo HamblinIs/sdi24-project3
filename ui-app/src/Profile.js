@@ -13,6 +13,7 @@ const Profile = () => {
 
     return (
         <>
+       <body class="Profile">
         <ResponsiveAppBar />
         <p className='greeting'> WELCOME BACK! YOUR GALACTIC TRAVEL INFORMATION IS UP TO DATE.</p>
         < UserInformation />
@@ -20,6 +21,7 @@ const Profile = () => {
         <div className='accountmessage'>
         <CommentBox />
         </div>
+        </body>
         </>
     );
 };

@@ -41,11 +41,11 @@ nav {
     text-align: center;
     line-height: 100px;
     /* Center text vertically */
-    background-image: url('https://th.bing.com/th/id/OIG2.sfPO_8wFTwywXU6M3Yna?pid=ImgGn');
+    background-image: url('https://th.bing.com/th/id/OIG3.pzLrh16ipnFgVHqMfWjf?pid=ImgGn');
     /* You can also use an image */
     background-size: auto;
     /* Ensure the image covers the circle */
-    background-position: center;
+    /* background-position: center; */
     /* Center the image within the circle */
 
 }

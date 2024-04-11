@@ -4,9 +4,7 @@ import ResponsiveAppBar from './Components/Headerbar'
 
 const Home = () => {
 
-  const style = {
-
-  };
+ 
 
   return (
     <>
