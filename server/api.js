@@ -69,7 +69,8 @@ api.post('/auth/signin', async (req, res) => {
     let dbData = {};
     knex("user_account").select('*').where({username: userData.username})
     .then(dbResp => {
-        if (dbResp.password === userData.password) {
+        console.log(dbResp)
+        if (dbResp[0].password === userData.password) {
             res.status(201).json({status: "Authenticated"})
         }
     })
