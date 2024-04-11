@@ -14,6 +14,10 @@ api.use(cors())
 //make a joined get to display your flights
 
 
+api.get('/', function(req, res) {
+    res.send("DATABASE ONLINE");
+})
+
 api.get('/data/user_account', function(req, res) {
     knex('user_account')
         .select('*')
@@ -39,6 +43,13 @@ api.get('/data/seat_type', function(req, res) {
         .then(data => res.status(200).json(data))
 })
 
+api.get('/data/user_account_by_id/:id', function(req, res) {
+    console.log("SEARCHING WITH ID:", req.params.id);
+    knex('user_account')
+        .select('*')
+        .where('id')
+        .then(data => res.status(200).json(data))
+})
 
 
 api.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
