@@ -4,7 +4,11 @@
  */
 exports.seed = async function(knex) {
   // Deletes ALL existing entries
-  await knex('user_account').del()
+  await knex.raw('TRUNCATE TABLE seats RESTART IDENTITY CASCADE')
+  await knex.raw('TRUNCATE TABLE seat_type RESTART IDENTITY CASCADE')
+  await knex.raw('TRUNCATE TABLE launch RESTART IDENTITY CASCADE')
+  await knex.raw('TRUNCATE TABLE user_account RESTART IDENTITY CASCADE')
+//   await knex('user_account').del()
   await knex('user_account').insert([
     {
       "id": 1,

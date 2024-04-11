@@ -16,4 +16,4 @@ EXPOSE 8080
 RUN npm install
 
 # Start the application
-CMD npm run initialize
+CMD npm start
