@@ -1,6 +1,9 @@
 import React from 'react';
 import ResponsiveAppBar from './Components/Headerbar';
 import Testimonials from './Components/Testimonials'; 
+import Destinations from './Components/Destinations';
+import FAQs from './Components/FAQ';
+import './Styling/Home.css';
 
 const Home = () => {
   return (
@@ -8,7 +11,15 @@ const Home = () => {
       <ResponsiveAppBar />
       <div className="homepage-content">
         
-        <Testimonials /> {/* Include the Testimonials component */}
+        <div className="purple-box">
+          <Testimonials /> 
+        </div>
+        <div className="purple-box">
+          <Destinations />
+        </div>
+        <div className="purple-box">
+          <FAQs />
+        </div>
       </div>
     </>
   );
