@@ -1,15 +1,15 @@
 import React from 'react';
-import ResponsiveAppBar from './Components/Headerbar'
-
+import ResponsiveAppBar from './Components/Headerbar';
+import Testimonials from './Components/Testimonials'; 
 
 const Home = () => {
-
- 
-
   return (
     <>
-    <ResponsiveAppBar />
-    <p>This is the Homepage</p>
+      <ResponsiveAppBar />
+      <div className="homepage-content">
+        
+        <Testimonials /> {/* Include the Testimonials component */}
+      </div>
     </>
   );
 };
