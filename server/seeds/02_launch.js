@@ -10,7 +10,7 @@
 exports.seed = async function(knex) {
   // Deletes ALL existing entries
 
-    await knex('launch').del()
+    // await knex('launch').del()
     await knex('launch').insert(
       [{'id': 0, 'destination': 'Europa', 'distance_from_earth': 483889580, 'is_available': true, 'date_time': '2038-6-6 3:54:24', 'seller': 'StarVoyage Enterprises'},
       {'id': 1, 'destination': 'New Tijuana', 'distance_from_earth': 461916511, 'is_available': false, 'date_time': '2038-5-27 11:37:39', 'seller': 'Celestial Journeys Co.'},
