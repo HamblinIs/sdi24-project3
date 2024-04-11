@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import styled from 'styled-components';
 // import Register from "./Register";
 import { Link } from "react-router-dom";
+import ResponsiveAppBar from './Components/Headerbar';
 // import { useAuth0 } from "@auth0/auth0-react";
 
 const LoginBox = styled.div`
@@ -107,6 +108,7 @@ const handleSubmit = async (event) => {
 
   return (
    <>
+   <ResponsiveAppBar />
     <Background>
     <LoginBox>
     <Title>Login Form</Title>
