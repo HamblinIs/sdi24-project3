@@ -76,4 +76,30 @@ api.post('/auth/signin', async (req, res) => {
     .catch(err => res.status(500).send(err));
 })
 
+api.get('/data/get_launch_price_range/:id', function(req, res) {
+    console.log("SEARCHING PRICES FOR LAUNCH: ", req.params.id);
+    knex.select('price')
+        .from('seats')
+        .where('launch', req.params.id)
+        .then(data => {
+            //console.log("THIS: ", data);
+            var lowVal = 9999999999999999;
+            var highVal = 0;
+            for(var i = 0; i < data.length; i++){
+                if(data[i].price > highVal){
+                    //console.log("NEW HIGH: ", data[i].price);
+                    highVal = data[i].price;
+                }
+                if(data[i].price < lowVal){
+                    //console.log("NEW LOW: ", data[i].price);
+                    lowVal = data[i].price;
+                }
 
+            }
+            console.log("HIGH/LOW IS: ", lowVal, " / ", highVal);
+            var highLow = [lowVal, highVal];
+            data = highLow;
+            res.status(200).json(data)
+        })
+
+})
