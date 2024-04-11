@@ -1,11 +1,10 @@
-.contact {
-    position: absolute;
-    top: 20%;
-    /* Adjust as needed */
-    left: 50%;
-    /* Center horizontally */
-    transform: translateX(-50%);
-    font-size: xx-large;
+body {
+    background-image: url(https://img.freepik.com/free-vector/hand-painted-watercolor-galaxy-background_23-2148975034.jpg);
+    background-size: cover;
+}
+
+
+.greeting {
     font-family: 'monospace';
     font-size: xx-large;
     font-weight: bolder;
@@ -16,31 +15,30 @@
     text-shadow: 2px 2px 4px #000080;
 }
 
-.message {
+
+
+.accounthelp {
     position: absolute;
-    top: 50%;
+    top: 65%;
     /* Center vertically */
     left: 50%;
     /* Center horizontally */
     transform: translate(-50%, -50%);
-    padding: 10px;
-    font-size: x-large;
     font-family: 'monospace';
+    font-size: x-large;
     font-weight: bolder;
     letter-spacing: '.3rem';
     text-align: center;
     color: aliceblue;
-    padding-top: 40px;
     text-shadow: 2px 2px 4px #000080;
 }
 
-.commentbox {
+.accountmessage {
     position: absolute;
     top: 80%;
-    /* Adjust as needed */
+    /* Center vertically */
     left: 50%;
     /* Center horizontally */
     transform: translate(-50%, -50%);
-    padding: 10px;
-
+    padding: 50;
 }

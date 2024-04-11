@@ -1,0 +1,19 @@
+.faqs {
+    font-family: 'Montserrat', sans-serif;
+    font-size: medium;
+    font-weight: bolder;
+    letter-spacing: '.3rem';
+    text-align: auto;
+    color: aliceblue;
+    text-shadow: 2px 2px 4px #000080;
+}
+
+.toggle-button:hover {
+    background-color: #483d8b;
+    /* Example background color on hover */
+}
+
+.toggle-button {
+    background-color: #a64fb8;
+    /* Example background color on hover */
+}
