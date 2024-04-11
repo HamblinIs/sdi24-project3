@@ -15,7 +15,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 
-const pages = ['Purchase Tickets', 'List of Vendors', 'Contact Us', 'Home'];
+const pages = ['Purchase Tickets', 'List of Vendors', 'Contact Us', 'Home', 'Login'];
 const settings = ['Profile', 'Account', 'My Tickets', 'Logout'];
 
 function ResponsiveAppBar() {
