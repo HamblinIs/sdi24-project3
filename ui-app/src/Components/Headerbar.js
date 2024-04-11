@@ -144,27 +144,37 @@ function ResponsiveAppBar() {
               </IconButton>
             </Tooltip>
             <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
+  id="menu-appbar"
+  anchorEl={anchorElNav}
+  anchorOrigin={{
+    vertical: 'bottom',
+    horizontal: 'left',
+  }}
+  keepMounted
+  transformOrigin={{
+    vertical: 'top',
+    horizontal: 'left',
+  }}
+  open={Boolean(anchorElNav)}
+  onClose={handleCloseNavMenu}
+  sx={{
+    display: { xs: 'block', md: 'none' },
+  }}
+>
+  {pages.map((page, index) => (
+    <>
+      <MenuItem
+        aria-valuetext={page}
+        component={Link}
+        to={`/${page.replace(/\s+/g, '').toLowerCase()}`}
+        onClick={handleCloseNavMenu}
+      >
+        <Typography textAlign="center">{page}</Typography>
+      </MenuItem>
+      {index !== pages.length - 1 && <Divider />}
+    </>
+  ))}
+</Menu>
           </Box>
         </Toolbar>
       </Container>
