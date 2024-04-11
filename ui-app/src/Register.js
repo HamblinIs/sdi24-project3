@@ -61,7 +61,7 @@ const Register = () => {
   // const [email, setEmail] = useState("");
   // const [address, setAddress] = useState("");
   const [error, setError] = useState(null);
-  const [newUser, setNewUser] = setState({
+  const [newUser, setNewUser] = useState({
     // "id": int,
     "name": "",
     "address": "",

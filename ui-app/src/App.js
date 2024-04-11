@@ -4,7 +4,7 @@ import Flights from './PurchaseTickets.js'; //
 import ContactUs from './ContactUs';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-// import Register from './Register';
+import Register from './Register';
 import Login from './Login';
 import Terms from "./Terms"
 
@@ -19,7 +19,7 @@ function App() {
             <Route path={'/Home'} element={<Home />} />
             <Route path={'/PurchaseTickets'} element={<Flights />} />
             <Route path='/login' element={<Login/>}/>
-            {/* <Route path='/register' element={ <Register/>}></Route> */}
+            <Route path='/register' element={ <Register/>}></Route>
             <Route path='/terms' element={ <Terms/>}></Route>
           </Routes>
         </Router>
