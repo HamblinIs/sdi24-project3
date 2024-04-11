@@ -14,6 +14,9 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
+import Divider from '@mui/material/Divider';
+
+
 
 const pages = ['Purchase Tickets', 'List of Vendors', 'Contact Us', 'Home'];
 const settings = ['Profile', 'My Tickets', 'Logout'];
@@ -89,7 +92,7 @@ function ResponsiveAppBar() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-            {pages.map((page) => (
+             {pages.map((page) => (
                 <MenuItem
                 aria-valuetext={page}
                 key={page}
@@ -145,36 +148,31 @@ function ResponsiveAppBar() {
             </Tooltip>
             <Menu
   id="menu-appbar"
-  anchorEl={anchorElNav}
+  anchorEl={anchorElUser}
   anchorOrigin={{
-    vertical: 'bottom',
-    horizontal: 'left',
+    vertical: 'top',
+    horizontal: 'right',
   }}
   keepMounted
   transformOrigin={{
     vertical: 'top',
-    horizontal: 'left',
+    horizontal: 'right',
   }}
-  open={Boolean(anchorElNav)}
-  onClose={handleCloseNavMenu}
-  sx={{
-    display: { xs: 'block', md: 'none' },
-  }}
+  open={Boolean(anchorElUser)}
+  onClose={handleCloseUserMenu}
 >
-  {pages.map((page, index) => (
-    <>
-      <MenuItem
-        aria-valuetext={page}
-        component={Link}
-        to={`/${page.replace(/\s+/g, '').toLowerCase()}`}
-        onClick={handleCloseNavMenu}
-      >
-        <Typography textAlign="center">{page}</Typography>
+  {settings.map((setting, index) => (
+    <React.Fragment key={setting}>
+      <MenuItem onClick={handleCloseUserMenu}>
+        <Link to={`/${setting.replace(/\s+/g, '').toLowerCase()}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+          <Typography textAlign="center">{setting}</Typography>
+        </Link>
       </MenuItem>
-      {index !== pages.length - 1 && <Divider />}
-    </>
+      {index !== settings.length - 1 && <Divider />}
+    </React.Fragment>
   ))}
 </Menu>
+
           </Box>
         </Toolbar>
       </Container>

@@ -1,19 +1,23 @@
 import React from 'react';
-import './Styling/UserHeader.css';
+import '../Styling/UserHeader.css';
 
-
-const MyFlights = (props) => {
-    const { each } = props
-    const { total, text, color } = each
-    const colorText = {
-        color: `${color}`
-    }
-    return (
-        <div className='d-flex flex-column align-items-center shadow flight-container'>
-            <p className='fs-2' style={colorText}>{total} </p>
-            <p>{text} </p>
-        </div>
-    )
+const UserInformation = () => {
+  return (
+    <div className="circle-container">
+      <div className="circle">
+        <p>Total Flights Taken</p>
+      </div>
+      <div className="circle">
+        <p>Upcoming Flight Information</p>
+      </div>
+      <div className="circle">
+        <p>Previous Flight Information</p>
+      </div>
+    </div>
+  );
 }
 
-export default MyFlights;
+export default UserInformation;
+
+
+
