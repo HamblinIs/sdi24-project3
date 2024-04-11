@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import "./PurchaseTickets.css"
 
 const PurchaseTicket = () => {
-  //need to get clicked flight from TicketPage
+  //To-Do:
+  //Fetch call to clicked price on specific flight
+  //Display new page with 
 
   const [allFlights, setAllFlights] = useState([])
   const [searchTerms, setSearchTerms] = useState({
@@ -38,7 +40,6 @@ const PurchaseTicket = () => {
       {'id': 9, 'destination': 'Nibiru', 'distance_from_earth': 634020610, 'is_available': false, 'date_time': '2038-3-2 7:17:05', 'seller': 'Interstellar Odyssey Group'}])
   }, [filteredFlights])
 
-  console.log(allFlights)
 
   if (allFlights.length == 0) {
       console.log('Page Still Loading')
@@ -52,15 +53,20 @@ const PurchaseTicket = () => {
   //}
 
   function filterAllFlights() {
+    let newFlightList = [];
+    
     for (let i = 0; i < allFlights.length; i++) {
-      if ((searchTerms.destination == allFlights[i].destination) && (searchTerms.dateTime == allFlights[i].dateTime) && (searchTerms.seller == allFlights[i].seller)) {
-        filteredFlights = [...filteredFlights, searchTerms.destination, searchTerms.dateTime, searchTerms.seller]
+      if ((searchTerms.destination === allFlights[i].destination) || (searchTerms.date_Time === allFlights[i].date_time) || (searchTerms.seller === allFlights[i].seller)) {
+        console.log(searchTerms.dateTime == allFlights[i].dateTime)
+        newFlightList.push(allFlights[i]);
       }}
+    setFilteredFlights(newFlightList);
+    console.log(newFlightList)
   }
 
   function handleSumbit(event) {
     event.preventDefault();
-    
+    filterAllFlights()
   }
 
   return (
@@ -76,32 +82,57 @@ const PurchaseTicket = () => {
             <label>Seller
                 <input onChange={(e) => setSearchTerms({...searchTerms, seller: e.target.value})} value={searchTerms.seller} type='text' name='seller' id='seller'></input>
             </label>
-            <input type='submit'/>
+            <input type='submit' onSubmit={handleSumbit}/>
           </form>
         </div>
         
-        <div class="flightsContainer">
-            {allFlights.map((allFlights) => {
+        {filteredFlights.length > 0 ? (
+          <div class="flightsContainer">
+            {filteredFlights.map((filteredFlights) => {
               return (
                 <div class='individualFlight'>{/* Flight Card Container */}
                   <div class='destinationStyling'>{/*  */}
-                    {allFlights.destination}
+                    {filteredFlights.destination}
                   </div>
                   <div class='distanceStyling'>{/*  */}
-                    {allFlights.distance_from_earth}
+                    {filteredFlights.distance_from_earth}
                   </div>
                   <div class='dateTimeStyling'>
-                    {allFlights.date_time}
+                    {filteredFlights.date_time}
                   </div>
                   <div class='availabilityStyling'>
-                    {allFlights.is_available}
+                    {filteredFlights.is_available}
                   </div>
                   <div class='sellerStyling'>
-                    {allFlights.seller}
+                    {filteredFlights.seller}
                   </div>
                 </div>
               )})}
-        </div>
+          </div>
+        ) : (
+        <div class="flightsContainer">
+          {allFlights.map((allFlights) => {
+            return (
+              <div class='individualFlight'>{/* Flight Card Container */}
+                <div class='destinationStyling'>{/*  */}
+                  {allFlights.destination}
+                </div>
+                <div class='distanceStyling'>{/*  */}
+                  {allFlights.distance_from_earth}
+                </div>
+                <div class='dateTimeStyling'>
+                  {allFlights.date_time}
+                </div>
+                <div class='availabilityStyling'>
+                  {allFlights.is_available}
+                </div>
+                <div class='sellerStyling'>
+                  {allFlights.seller}
+                </div>
+              </div>
+            )})}
+      </div>
+        )}
       </div>
       )
 };
