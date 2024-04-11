@@ -1,20 +1,27 @@
+
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
 import Terms from "./Terms"
 import Popup from 'reactjs-popup';
+import ResponsiveAppBar from './Components/Headerbar';
 
 const RegisterBox = styled.div`
   text-align:center;
-  border: 5px solid;
+  border: 2px solid;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 10px;
+  padding: 20px;
 `;
 
+const Title =styled.div`
+font-size:20px;
+color:black`
+
 const Label = styled.div`
+font-size:15px;
 display:flex;
 width:24%;
 text-align:left;
@@ -41,19 +48,33 @@ width: 100%;
 `;
 
 const Container = styled.button`
-background-color: blue;
+text-align: left;
+background-color: #1F003E;
 color: white;
-
+border: 30px solid;
 `;
 
-const RegisterForm = () => {
-  const [userData, setUserData] = useState(null);
+const Register = () => {
+  // const [userData, setUserData] = useState(null);
   // const [password, setPassword] = useState("");
   // const [username, setUsername] = useState("");
   // const [name, setName] = useState("");
   // const [email, setEmail] = useState("");
   // const [address, setAddress] = useState("");
   const [error, setError] = useState(null);
+  const [newUser, setNewUser] = useState({
+    // "id": int,
+    "name": "",
+    "address": "",
+    "email": "",
+    "username": "",
+    "password": ""
+  })
+
+  const addNew = async (event) => {
+    const { name, input } = event.trigger
+    setNewUser({...newUser, [name]: ""})
+  }
 
 const handleSubmit = async (event) => {
   event.preventDefault();
@@ -61,21 +82,28 @@ const handleSubmit = async (event) => {
   const response = await fetch('http://localhost:8080/auth/signup', {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(userData)
+      body: JSON.stringify(newUser)
     })
-    if (response.status === 201) {
-      const data = await response.json();
-      setUserData(data);
+    if(response.status !== 201) {
+      throw new Error("Unable to register user")
     }else{
-      setError('Error registering user');
+      setNewUser({
+        // "id": int,
+    "name": "",
+    "address": "",
+    "email": "",
+    "username": "",
+    "password": ""
+      })
+      alert("Registration worked")
     }
-}}
+  }
 
-const Register = () => {
   return (
     <>
+    <ResponsiveAppBar/>
       <RegisterBox>
-        <div>Register</div>
+        <Title>Register</Title>
         <p>Please fill in this form to create an account.</p>
         <Label>Name</Label>
         <InputField type="text" placeholder="Name" name="name" />
@@ -104,10 +132,9 @@ const Register = () => {
               </div>
             )}
           </Popup>
-        <Link to={'/terms'} style={{color:"blue"}}>Terms & Condition</Link>
         <Button type = "submit" onClick={() => console.log('Button Clicked')}>Register</Button>
         <p>Already have an account?</p>
-        <Link to={'/'} style={{color:"black"}}>Log In</Link>
+        <Link to={'/login'} style={{color:"black"}}>Log In</Link>
 
       </RegisterBox>
     </>
