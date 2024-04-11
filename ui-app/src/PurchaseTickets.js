@@ -4,7 +4,7 @@ import "./PurchaseTickets.css"
 const PurchaseTicket = () => {
   //To-Do:
   //Fetch call to clicked price on specific flight
-  //Display new page with 
+  //Make fields have a dropdown with destination names 
 
   const [allFlights, setAllFlights] = useState([])
   const [searchTerms, setSearchTerms] = useState({
@@ -12,6 +12,7 @@ const PurchaseTicket = () => {
     date_time: '',
     seller: ''
   })
+  
   const [filteredFlights, setFilteredFlights] = useState([])
 
   //apparently used for the form input fields
