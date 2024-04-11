@@ -5,13 +5,13 @@ const UserInformation = () => {
   return (
     <div className="circle-container">
       <div className="circle">
-        <p>Total Flights Taken</p>
+        <p className='flights'>Followed Launches</p>
       </div>
       <div className="circle">
-        <p>Upcoming Flight Information</p>
+        <p className='flights'>Upcoming Flights</p>
       </div>
       <div className="circle">
-        <p>Previous Flight Information</p>
+        <p className='flights'>Previous Flights</p>
       </div>
     </div>
   );

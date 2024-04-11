@@ -4,29 +4,63 @@ body {
     padding: 0;
 }
 
+.flights {
+    font-size: large;
+    font-family: 'monospace';
+    font-weight: 200;
+    text-align: center;
+    text-shadow: 2px 2px 4px #000080;
+}
+
 nav {
     background-color: #333;
     color: #fff;
     padding: 10px;
 }
 
-.circle-container {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
+.container {
+    position: relative;
+    /* Add a container to position the circles relative to */
+}
+
+.container {
+    position: relative;
+    /* Add a container to position the circles relative to */
 }
 
 .circle {
-    width: 400px;
-    height: 400px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
-    background-color: #007bff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: inline-block;
+    position: absolute;
+    top: 40vh;
+    /* Adjust this value to raise or lower the circles */
     color: #fff;
     font-size: 14px;
     text-align: center;
+    line-height: 100px;
+    /* Center text vertically */
+    background-image: url('https://th.bing.com/th/id/OIG2.sfPO_8wFTwywXU6M3Yna?pid=ImgGn');
+    /* You can also use an image */
+    background-size: auto;
+    /* Ensure the image covers the circle */
+    background-position: center;
+    /* Center the image within the circle */
+
 }
 
-/* Adjust circle size and other styles as needed */
+.circle:nth-child(1) {
+    left: calc(50% - 350px);
+    /* Adjust this value to control the position of the first circle */
+}
+
+.circle:nth-child(2) {
+    left: calc(50% - 100px);
+    /* Adjust this value to control the position of the second circle */
+}
+
+.circle:nth-child(3) {
+    left: calc(50% + 150px);
+    /* Adjust this value to control the position of the third circle */
+}

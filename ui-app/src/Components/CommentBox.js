@@ -12,6 +12,10 @@ import FormatBold from '@mui/icons-material/FormatBold';
 import FormatItalic from '@mui/icons-material/FormatItalic';
 import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
 import Check from '@mui/icons-material/Check';
+import '../Styling/CommentBox.css';
+
+
+
 
 export default function CommentBox() {
   const [italic, setItalic] = React.useState(false);
@@ -28,7 +32,7 @@ export default function CommentBox() {
   <React.Fragment>
     {!commentSubmitted ? ( // Display comment box if comment not yet submitted
       <FormControl>
-        <FormLabel>Your comment</FormLabel>
+    <FormLabel className="whiteText">Your comment</FormLabel>
         <Textarea
           placeholder="Type something here…"
           minRows={3}
