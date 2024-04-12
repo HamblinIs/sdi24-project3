@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import styled from 'styled-components';
 // import Register from "./Register";
 import { Link } from "react-router-dom";
+import ResponsiveAppBar from './Components/Headerbar';
 // import { useAuth0 } from "@auth0/auth0-react";
 
 const LoginBox = styled.div`
@@ -9,23 +10,24 @@ const LoginBox = styled.div`
 
   text-align:center;
   // border-radius:50;
-  border: 5px solid;
+  border: 2px solid;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 10px;`
+  padding: 20px;`
 
 const Title =styled.div`
 font-size:20px;
-color:white`
+color:black`
 
 const Label = styled.div`
+font-size: 15px;
 display:flex;
 width:24%;
 text-align:left;
 padding-left: 10px;
-color:white;`
+color:black;`
 
 const InputField = styled.input`
 width: 100%;
@@ -35,13 +37,13 @@ display: inline-block;
 border: 1px solid #ccc;
 box-sizing: border-box;`
 
-const Background = styled.div`
-background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREfLTJ4M6oQwfGs9waFkLFz1I5UPlNdlj2iJlQip1d-8Ds_h_oRM9DeF_U_XM1Uyn5G68&usqp=CAU');
-height: 100vh;
-display: cover;
-background-size: cover;
-image-rendering: auto;
-`;
+// const Background = styled.div`
+// background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREfLTJ4M6oQwfGs9waFkLFz1I5UPlNdlj2iJlQip1d-8Ds_h_oRM9DeF_U_XM1Uyn5G68&usqp=CAU');
+// height: 100vh;
+// display: cover;
+// background-size: cover;
+// image-rendering: auto;
+// `;
 
 const Button = styled.button`
 background-color: blue;
@@ -69,45 +71,53 @@ width: 100%;
 //   password: "secret-pass"
 // }
 
+
 const Login = () => {
-  const [userData, setUserData] = useState(null);
-  const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("");
+  const [userData, setUserData] = useState({ username: '', password: '' });
   const [error, setError] = useState(null);
 
-const handleSubmit = async (event) => {
-  event.preventDefault();
-
-  // const response = await fetch('http://localhost:8080/data/user_accounts', {
-  //     method: "GET",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify({ userData})
-  //   })
-
-  const response = await fetch('http://localhost:8080/auth/signin', {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(userData)
-    })
-    // .then(response => {
-    //  if response.status !== 200) {
-    //   throw new Error('Not a valid Username or Password');
-    // }
-    // .then(data => {
-    //   setUserData(data);
-    // })
-    if (response.status === 201) {
-      const data = await response.json();
-      setUserData(data);
-    }else{
-      setError('User not found');
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try{
+      const response = await fetch('http://localhost:8080/auth/signin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(userData),
+      });
+      if (response.status === 201) {
+        const data = await response.json();
+        setUserData(data);
+        setError(null);
+        alert('Login success')
+        window.location.href = 'http://localhost:3000/Home';
+      } else {
+        alert('User not found')
+        throw new Error('User not found');
+      }
+    } catch (error) {
+      setError(error.message);
+      console.error('Error:', error);
     }
-}
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setUserData({ ...userData, [name]: value });
+  };
+
+
+    // if (response.status === 201) {
+    //   const data = await response.json();
+    //   setUserData(data);
+    // }else{
+    //   setError('User not found');
+    // }
+
 
 
   return (
    <>
-    <Background>
+   <ResponsiveAppBar/>
     <LoginBox>
     <Title>Login Form</Title>
     <br />
@@ -117,7 +127,8 @@ const handleSubmit = async (event) => {
       <InputField
         type="text"
         placeholder="Enter Username"
-        onChange={(e) => setUsername(e.target.value)}
+        value={userData.username}
+        onChange={(event) => setUserData({ ...userData, username: event.target.value })}
       />
     </div>
     <br />
@@ -126,17 +137,24 @@ const handleSubmit = async (event) => {
       <InputField
         type="text"
         placeholder="Enter Password"
-        onChange={(e) => setPassword(e.target.value)}
+        value={userData.password}
+        onChange={(event) => setUserData({ ...userData, password: event.target.value })}
         />
       </div>
       <Button type = "submit" onClick={() => console.log('Button Clicked')}>Login</Button>
       {/* <Button3 type = "forgot-pw" onClick={() => console.log('Button Clicked')}>Forgot Password</Button3> */}
-      <Link to={'/register'} style={{color:"white"}}>Click Here to Register</Link>
+      <Link to={'/register'} style={{color:"black"}}>Click Here to Register</Link>
       </form>
     </LoginBox>
-    </Background>
     </>
   );
 };
 
 export default Login;
+
+
+
+
+
+
+

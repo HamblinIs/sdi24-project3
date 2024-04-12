@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Register from './Register';
 import Login from './Login';
 import Terms from "./Terms"
+import Profile from'./Profile.js';
 
 function App() {
   return (
@@ -18,9 +19,10 @@ function App() {
             <Route path={'/ContactUs'} element={<ContactUs />} />
             <Route path={'/Home'} element={<Home />} />
             <Route path={'/PurchaseTickets'} element={<Flights />} />
-            <Route path='/' element={<Login/>}/>
+            <Route path='/login' element={<Login/>}/>
             <Route path='/register' element={ <Register/>}></Route>
             <Route path='/terms' element={ <Terms/>}></Route>
+            <Route path='/Profile' element={ <Profile/>}></Route>
           </Routes>
         </Router>
       </div>

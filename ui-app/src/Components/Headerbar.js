@@ -14,8 +14,11 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
+import Divider from '@mui/material/Divider';
 
-const pages = ['Purchase Tickets', 'List of Vendors', 'Contact Us', 'Home'];
+
+
+const pages = ['Purchase Tickets', 'List of Vendors', 'Contact Us', 'Home', 'Login'];
 const settings = ['Profile', 'Account', 'My Tickets', 'Logout'];
 
 function ResponsiveAppBar() {
@@ -89,8 +92,15 @@ function ResponsiveAppBar() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+             {pages.map((page) => (
+                <MenuItem
+                aria-valuetext={page}
+                key={page}
+                component={Link}
+                to={`/${page.replace(/\s+/g, '').toLowerCase()}`}
+                onClick={() => {
+                  handleCloseNavMenu();
+                }}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
@@ -137,27 +147,32 @@ function ResponsiveAppBar() {
               </IconButton>
             </Tooltip>
             <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
+  id="menu-appbar"
+  anchorEl={anchorElUser}
+  anchorOrigin={{
+    vertical: 'top',
+    horizontal: 'right',
+  }}
+  keepMounted
+  transformOrigin={{
+    vertical: 'top',
+    horizontal: 'right',
+  }}
+  open={Boolean(anchorElUser)}
+  onClose={handleCloseUserMenu}
+>
+  {settings.map((setting, index) => (
+    <React.Fragment key={setting}>
+      <MenuItem onClick={handleCloseUserMenu}>
+        <Link to={`/${setting.replace(/\s+/g, '').toLowerCase()}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+          <Typography textAlign="center">{setting}</Typography>
+        </Link>
+      </MenuItem>
+      {index !== settings.length - 1 && <Divider />}
+    </React.Fragment>
+  ))}
+</Menu>
+
           </Box>
         </Toolbar>
       </Container>

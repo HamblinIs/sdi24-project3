@@ -1,0 +1,32 @@
+.searchForm {
+    display: flex;
+    justify-content: center;
+}
+
+.flightsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px;
+}
+
+.individualFlight {
+    display:flex;
+    align-items: center;
+}
+
+.destinationStyling {
+    margin: 5px;
+}
+
+.dateTimeStyling {
+    margin: 5px;
+}
+
+.availabilityStyling {
+    margin: 5px;
+}
+
+.sellerStyling {
+    margin: 5px;
+}
