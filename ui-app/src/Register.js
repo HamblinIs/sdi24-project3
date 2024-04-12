@@ -13,12 +13,13 @@ const RegisterBox = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  color: white;
   padding: 20px;
 `;
 
 const Title =styled.div`
 font-size:20px;
-color:black`
+color:white`
 
 const Label = styled.div`
 font-size:15px;
@@ -26,7 +27,7 @@ display:flex;
 width:24%;
 text-align:left;
 padding-left: 10px;
-color:Black;`
+color:white;`
 
 const InputField = styled.input`
 width: 100%;
@@ -45,14 +46,19 @@ margin: 8px 0;
 border: none;
 cursor: pointer;
 width: 100%;
+color: white;
 `;
 
 const Container = styled.button`
 text-align: left;
 background-color: #1F003E;
 color: white;
-border: 30px solid;
+border: 20px solid;
 `;
+
+// const Button1 = styled.button`
+// color: white;
+// `;
 
 const Register = () => {
   // const [userData, setUserData] = useState(null);
@@ -142,7 +148,7 @@ const Register = () => {
         <Button type = "submit" onClick={() => console.log('Button Clicked')}>Register</Button>
         </form>
         <p>Already have an account?</p>
-        <Link to={'/login'} style={{color:"black"}}>Log In</Link>
+        <Link to={'/login'} style={{color:"white"}}>Log In</Link>
 
       </RegisterBox>
     </>
