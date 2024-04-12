@@ -14,6 +14,7 @@ EXPOSE 8080
 
 # Run this shell command at build time
 RUN npm install
+RUN npm install knex
 
 # Start the application
 CMD npm start
