@@ -71,33 +71,39 @@ const Register = () => {
     "password": ""
   })
 
-  const addNew = async (event) => {
-    const { name, input } = event.trigger
-    setNewUser({...newUser, [name]: ""})
-  }
 
-const handleSubmit = async (event) => {
-  event.preventDefault();
+  const handleSignUp = async (event) => {
+    event.preventDefault();
 
-  const response = await fetch('http://localhost:8080/auth/signup', {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newUser)
-    })
-    if(response.status !== 201) {
-      throw new Error("Unable to register user")
-    }else{
-      setNewUser({
-        // "id": int,
-    "name": "",
-    "address": "",
-    "email": "",
-    "username": "",
-    "password": ""
-      })
-      alert("Registration worked")
+    try {
+      const response = await fetch('http://localhost:8080/auth/signup', {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newUser)
+      });
+
+      if (response.status !== 201) {
+        throw new Error("Unable to register user");
+      } else {
+        setNewUser({
+          name: "",
+          address: "",
+          email: "",
+          username: "",
+          password: ""
+        });
+        alert("Registration successful");
+      }
+    } catch (error) {
+      console.error("Error registering user:", error);
+      alert("Registration failed. Please try again.");
     }
-  }
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setNewUser({ ...newUser, [name]: value });
+  };
 
   return (
     <>
@@ -105,16 +111,17 @@ const handleSubmit = async (event) => {
       <RegisterBox>
         <Title>Register</Title>
         <p>Please fill in this form to create an account.</p>
+        <form onSubmit={handleSignUp}>
         <Label>Name</Label>
-        <InputField type="text" placeholder="Name" name="name" />
+        <InputField type="text" placeholder="Name" name="name" value={newUser.name} onChange={handleChange}/>
         <Label>Email</Label>
-        <InputField type="text" placeholder="Email" name="email" />
+        <InputField type="text" placeholder="Email" name="email" value={newUser.email} onChange={handleChange}/>
         <Label>Address</Label>
-        <InputField type="text" placeholder="Address" name="address" />
+        <InputField type="text" placeholder="Address" name="address" value={newUser.address} onChange={handleChange}/>
         <Label>Username</Label>
-        <InputField type="text" placeholder="Username" name="username" />
+        <InputField type="text" placeholder="Username" name="username" value={newUser.username} onChange={handleChange}/>
         <Label>Password</Label>
-        <InputField type="text" placeholder="Password" name="psw" />
+        <InputField type="text" placeholder="Password" name="password" value={newUser.password} onChange={handleChange}/>
         <p> By creating an account you agree to our</p>
           <Popup
             trigger={<Button>Terms</Button>}
@@ -133,6 +140,7 @@ const handleSubmit = async (event) => {
             )}
           </Popup>
         <Button type = "submit" onClick={() => console.log('Button Clicked')}>Register</Button>
+        </form>
         <p>Already have an account?</p>
         <Link to={'/login'} style={{color:"black"}}>Log In</Link>
 

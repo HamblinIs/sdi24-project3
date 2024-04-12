@@ -71,38 +71,39 @@ width: 100%;
 //   password: "secret-pass"
 // }
 
+
 const Login = () => {
-  const [userData, setUserData] = useState({
-    username: '',
-    password: '',
-  });
-  // const [password, setPassword] = useState("");
-  // const [username, setUsername] = useState("");
-  // const [error, setError] = useState(null);
+  const [userData, setUserData] = useState({ username: '', password: '' });
+  const [error, setError] = useState(null);
 
-const handleSubmit = (event) => {
-  event.preventDefault();
-
-  // const response = await fetch('http://localhost:8080/data/user_accounts', {
-  //     method: "GET",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify({ userData})
-  //   })
-
-  fetch('http://localhost:8080/auth/signin', {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(userData)
-  })
-    .then(response => {
-     if (response.status === 201) {
-      const data =
-      window.location.href ='http://localhost:8080/Home';
-     }else {
-      throw new Error('Not a valid Username or Password');
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try{
+      const response = await fetch('http://localhost:8080/auth/signin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(userData),
+      });
+      if (response.status === 201) {
+        const data = await response.json();
+        setUserData(data);
+        setError(null);
+        alert('Login success')
+        window.location.href = 'http://localhost:3000/Home';
+      } else {
+        alert('User not found')
+        throw new Error('User not found');
+      }
+    } catch (error) {
+      setError(error.message);
+      console.error('Error:', error);
     }
-  })
-}
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setUserData({ ...userData, [name]: value });
+  };
 
 
     // if (response.status === 201) {
@@ -126,7 +127,8 @@ const handleSubmit = (event) => {
       <InputField
         type="text"
         placeholder="Enter Username"
-        // onChange={(e) => setUsername(e.target.value)}
+        value={userData.username}
+        onChange={(event) => setUserData({ ...userData, username: event.target.value })}
       />
     </div>
     <br />
@@ -135,7 +137,8 @@ const handleSubmit = (event) => {
       <InputField
         type="text"
         placeholder="Enter Password"
-        // onChange={(e) => setPassword(e.target.value)}
+        value={userData.password}
+        onChange={(event) => setUserData({ ...userData, password: event.target.value })}
         />
       </div>
       <Button type = "submit" onClick={() => console.log('Button Clicked')}>Login</Button>
@@ -148,3 +151,10 @@ const handleSubmit = (event) => {
 };
 
 export default Login;
+
+
+
+
+
+
+
