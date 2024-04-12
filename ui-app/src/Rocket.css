@@ -1,13 +1,12 @@
 .rocket {
     position: fixed;
-    /* Change position to fixed to ensure it stays at the bottom even when scrolling */
-    bottom: 2in;
-    /* Lift it up by 2 inches */
-    width: 80px;
-    left: calc(50% - 40px);
-    /* Center horizontally */
+    bottom: 20px;
+    /* Adjust as needed */
+    right: 20px;
+    /* Adjust as needed */
+    z-index: 1000;
+    /* Ensure it's above other content */
 }
-
 
 .rocket .rocket-body {
     width: 80px;

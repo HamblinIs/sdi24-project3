@@ -1,16 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 function UpcomingLaunch() {
     const [launch, setLaunch] = useState(null);
     const [userId, setUserId] = useState('');
-
-    useEffect(() => {
-        // Fetch user ID from session or authentication context
-        const loggedInUserId = sessionStorage.getItem('userId'); 
-        if (loggedInUserId) {
-            setUserId(loggedInUserId); 
-        }
-    }, []);
 
     const showLaunch = async () => {
         try {
@@ -29,22 +21,19 @@ function UpcomingLaunch() {
 
     return (
         <div>
-            {!userId && (
-                <p>Please log in to view upcoming launches.</p>
-            )}
-
-            {userId && (
-                <>
-                    <button onClick={showLaunch} className="upcoming-launch-button">Show Launch</button>
-
-                    {launch && (
-                        <div>
-                            <p>Name: {launch.launch_destination}</p>
-                            <p>Date: {launch.launch_date_time}</p>
-                         
-                        </div>
-                    )}
-                </>
+            <input
+                type="text"
+                value={userId}
+                onChange={(e) => setUserId(e.target.value)}
+                placeholder="Enter User ID"
+            />
+            <button onClick={showLaunch}>Show Most Recent Past Flight</button>
+            {launch && (
+                <div>
+                    <p>Name: {launch.launch_destination}</p>
+                    <p>Date: {launch.launch_date_time}</p>
+                   
+                </div>
             )}
         </div>
     );
