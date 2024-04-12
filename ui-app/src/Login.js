@@ -15,11 +15,12 @@ const LoginBox = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  color: white;
   padding: 20px;`
 
 const Title =styled.div`
 font-size:20px;
-color:black`
+color: white;`
 
 const Label = styled.div`
 font-size: 15px;
@@ -27,7 +28,7 @@ display:flex;
 width:24%;
 text-align:left;
 padding-left: 10px;
-color:black;`
+color:white;`
 
 const InputField = styled.input`
 width: 100%;
@@ -143,7 +144,7 @@ const Login = () => {
       </div>
       <Button type = "submit" onClick={() => console.log('Button Clicked')}>Login</Button>
       {/* <Button3 type = "forgot-pw" onClick={() => console.log('Button Clicked')}>Forgot Password</Button3> */}
-      <Link to={'/register'} style={{color:"black"}}>Click Here to Register</Link>
+      <Link to={'/register'} style={{color:"white"}}>Click Here to Register</Link>
       </form>
     </LoginBox>
     </>
