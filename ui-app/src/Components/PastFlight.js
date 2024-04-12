@@ -27,7 +27,7 @@ function PastLaunch() {
                 onChange={(e) => setUserId(e.target.value)}
                 placeholder="Enter User ID"
             />
-            <button onClick={showLaunch}>Show Most Recent Past Flight</button>
+            <button onClick={showLaunch}>Most Recent Past Flight</button>
             {launch && (
                 <div>
                     <p>Name: {launch.launch_destination}</p>
