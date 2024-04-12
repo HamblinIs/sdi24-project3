@@ -1,0 +1,141 @@
+.rocket {
+    position: fixed;
+    /* Change position to fixed to ensure it stays at the bottom even when scrolling */
+    bottom: 2in;
+    /* Lift it up by 2 inches */
+    width: 80px;
+    left: calc(50% - 40px);
+    /* Center horizontally */
+}
+
+
+.rocket .rocket-body {
+    width: 80px;
+    left: calc(50% - 50px);
+    animation: bounce 0.5s infinite;
+}
+
+.rocket .rocket-body .body {
+    background-color: #f0f0f0;
+    /* Replace with your color variables */
+    height: 180px;
+    left: calc(50% - 50px);
+    border-top-right-radius: 100%;
+    border-top-left-radius: 100%;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-top: 5px solid #ffffff;
+    /* Replace with your color variables */
+}
+
+.rocket .rocket-body:before {
+    content: '';
+    position: absolute;
+    left: calc(50% - 24px);
+    width: 48px;
+    height: 13px;
+    background-color: #b356b6;
+    /* Replace with your color variables */
+    bottom: -13px;
+    border-bottom-right-radius: 60%;
+    border-bottom-left-radius: 60%;
+}
+
+.rocket .rocket-body .window {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background-color: #8041d3;
+    /* Replace with your color variables */
+    left: calc(50% - 25px);
+    top: 40px;
+    border: 5px solid #f06ede;
+    /* Replace with your color variables */
+}
+
+.rocket .rocket-body .fin {
+    position: absolute;
+    z-index: -100;
+    height: 55px;
+    width: 50px;
+    background-color: #ebd7d7;
+    /* Replace with your color variables */
+}
+
+.rocket .rocket-body .fin-left {
+    left: -30px;
+    top: calc(100% - 55px);
+    border-top-left-radius: 80%;
+    border-bottom-left-radius: 20%;
+}
+
+.rocket .rocket-body .fin-right {
+    right: -30px;
+    top: calc(100% - 55px);
+    border-top-right-radius: 80%;
+    border-bottom-right-radius: 20%;
+}
+
+.rocket .exhaust-flame {
+    position: absolute;
+    top: 90%;
+    width: 28px;
+    background: linear-gradient(to bottom, transparent 10%, #ffffff 100%);
+    height: 150px;
+    left: calc(50% - 14px);
+    animation: exhaust 0.2s infinite;
+}
+
+.rocket .exhaust-fumes li {
+    width: 60px;
+    height: 60px;
+    background-color: #ffffff;
+    /* Replace with your color variables */
+    list-style: none;
+    position: absolute;
+    border-radius: 100%;
+}
+
+.rocket .exhaust-fumes li:first-child {
+    width: 200px;
+    height: 200px;
+    bottom: -300px;
+    animation: fumes 5s infinite;
+}
+
+.rocket .exhaust-fumes li:nth-child(2) {
+    width: 150px;
+    height: 150px;
+    left: -120px;
+    top: 260px;
+    animation: fumes 3.2s infinite;
+}
+
+/* Add more styles for other .exhaust-fumes li as needed */
+
+.star li {
+    list-style: none;
+    position: absolute;
+}
+
+/* Add more styles for .star li as needed */
+
+@keyframes fumes {
+    50% {
+        transform: scale(1.5);
+        background-color: transparent;
+    }
+
+    51% {
+        transform: scale(0.8);
+    }
+
+    100% {
+        background-color: #ffffff;
+        /* Replace with your color variables */
+        transform: scale(1);
+    }
+}
+
+/* Add more keyframe animations as needed */

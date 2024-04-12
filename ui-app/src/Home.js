@@ -4,6 +4,7 @@ import Testimonials from './Components/Testimonials';
 import Destinations from './Components/Destinations';
 import FAQs from './Components/FAQ';
 import './Styling/Home.css';
+import RocketAnimation from './Rocket';
 
 const Home = () => {
   return (
@@ -20,6 +21,7 @@ const Home = () => {
           <div className="purple-box">
             <FAQs />
           </div>
+          <RocketAnimation />
         </div>
       </div>
     </>
