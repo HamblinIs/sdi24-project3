@@ -16,15 +16,23 @@ app.use(cookieSession({
     sameSite: 'strict',
 }));
 
-app.get('/login', function (req, res) {
-    if (loginSuccess(req.body.username)) {
-        req.session.username = req.body.username;
-    }else {
-        
-        req.status(403).send();
-      }
-}); 
-
+app.get('/data/launches_by_user_id', function (req, res) {
+    // Retrieve username from session cookie
+    const username = req.session.username;
+    
+    if (username) {
+        // If username exists in session, proceed with fetching launches
+        console.log("SEARCHING LAUNCHES WITH USERNAME: ", username);
+        knex.select('id')
+            .from('user_account')
+            .where('username', username)
+            .then(data => res.status(200).json(data))
+            .catch(err => res.status(500).json({ error: err.message }));
+    } else {
+        // If username doesn't exist in session, return unauthorized
+        res.status(401).send('Unauthorized');
+    }
+});
 app.get('/', (req, res) => res.send('Hello World!'));
 
 app.get('/launches', async (req, res) => {

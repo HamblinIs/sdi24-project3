@@ -19,7 +19,7 @@ import Divider from '@mui/material/Divider';
 
 
 const pages = ['Purchase Tickets', 'List of Vendors', 'Contact Us', 'Home', 'Login'];
-const settings = ['Profile', 'Account', 'My Tickets', 'Logout'];
+const settings = ['Profile', 'My Tickets', 'Logout'];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);

@@ -19,14 +19,13 @@ nav {
 }
 
 .container {
-    position: relative;
-    /* Add a container to position the circles relative to */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
 }
 
-.container {
-    position: relative;
-    /* Add a container to position the circles relative to */
-}
 
 .circle {
     width: 200px;
@@ -45,22 +44,4 @@ nav {
     /* You can also use an image */
     background-size: auto;
     /* Ensure the image covers the circle */
-    /* background-position: center; */
-    /* Center the image within the circle */
-
-}
-
-.circle:nth-child(1) {
-    left: calc(50% - 350px);
-    /* Adjust this value to control the position of the first circle */
-}
-
-.circle:nth-child(2) {
-    left: calc(50% - 100px);
-    /* Adjust this value to control the position of the second circle */
-}
-
-.circle:nth-child(3) {
-    left: calc(50% + 150px);
-    /* Adjust this value to control the position of the third circle */
 }
