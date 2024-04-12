@@ -24,7 +24,7 @@
     border-top-left-radius: 100%;
     border-bottom-left-radius: 50%;
     border-bottom-right-radius: 50%;
-    border-top: 5px solid #ffffff;
+    border-top: 5px solid #d360e2;
     /* Replace with your color variables */
 }
 
@@ -90,7 +90,7 @@
 .rocket .exhaust-fumes li {
     width: 60px;
     height: 60px;
-    background-color: #ffffff;
+    background-color: #a63de2;
     /* Replace with your color variables */
     list-style: none;
     position: absolute;
@@ -132,7 +132,7 @@
     }
 
     100% {
-        background-color: #ffffff;
+        background-color: #ec82de;
         /* Replace with your color variables */
         transform: scale(1);
     }
