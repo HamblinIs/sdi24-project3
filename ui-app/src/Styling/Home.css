@@ -1,0 +1,44 @@
+.purple-box {
+    background-color: rgb(153, 56, 153);
+    padding: 10px;
+    /* Decreased padding */
+    margin-bottom: 20px;
+    /* Add margin between the boxes */
+    box-shadow: 2px 2px 4px #4b0082;
+    /* Darker purple shadow */
+    display: inline-block;
+    /* Make the purple boxes fit around the words */
+    border-radius: 10px;
+
+}
+
+.purple-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Center content vertically */
+    align-items: center;
+    /* Center content horizontally */
+    padding: 20px;
+    /* Add padding for spacing */
+    background-color: purple;
+    /* Example background color */
+    color: white;
+    /* Example text color */
+}
+
+.homepage-content {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    /* Center the button container horizontally */
+    align-items: center;
+    /* Center the button container vertically */
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    /* Add space between buttons */
+    gap: 20px;
+}

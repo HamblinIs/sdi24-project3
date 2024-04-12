@@ -102,5 +102,20 @@ api.get('/data/get_launch_price_range/:id', function(req, res) {
             data = highLow;
             res.status(200).json(data)
         })
+})
 
+api.get('/data/get_user_id', function(req, res) {
+    console.log("SEARCHING WITH USERNAME: ", req.params.id);
+    knex.select('*')
+        .from('user_account')
+        .where('id', req.params.id)
+        .then(data => res.status(200).json(data))
+})
+
+api.get('/data/launches_by_user_id', function(req, res) {
+    console.log("SEARCHING WITH ID: ", req.body.id);
+    knex.select('id')
+        .from('user_account')
+        .where('username', req.body.username)
+        .then(data => res.status(200).json(data))
 })
