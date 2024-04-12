@@ -12,3 +12,17 @@
 .upcoming-launch-button:hover {
     background-color: #0056b3;
 }
+
+
+.toggle-button:hover {
+    background-color: #483d8b;
+    /* Example background color on hover */
+}
+
+.toggle-button {
+    background-color: #a64fb8;
+    /* Example background color on hover */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+}

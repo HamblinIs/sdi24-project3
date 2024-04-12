@@ -27,7 +27,7 @@ function UpcomingLaunch() {
                 onChange={(e) => setUserId(e.target.value)}
                 placeholder="Enter User ID"
             />
-            <button onClick={showLaunch}>Upcoming Flight</button>
+            <button  className="toggle-button" onClick={showLaunch}>Upcoming Flight</button>
             {launch && (
                 <div>
                     <p>Name: {launch.launch_destination}</p>
