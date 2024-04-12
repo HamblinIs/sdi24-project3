@@ -58,7 +58,7 @@ const Terms = () => {
           By proceeding with your ticket purchase, you agree to abide by the terms and conditions outlined above. Bon voyage, intrepid traveler! Together, we'll explore the final frontier and beyond.
           <br></br>
           </ul>
-          [Insert company name]
+          FarGate
 
   </p>
     </Container>
